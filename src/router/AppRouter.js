@@ -6,12 +6,14 @@ import Login from "../pages/Login";
 import MovieDetail from "../pages/MovieDetail";
 import React from 'react'
 import NotFound from "../pages/NotFound";
+import Navbar from "../components/Navbar";
 
 
 
 const AppRouter = () => {
   return (
     <Router>
+        <Navbar />
         <Routes>
             <Route path ="/" element = {<Main />}/>
             <Route path ="/register" element = {<Register />}/>

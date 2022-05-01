@@ -9,7 +9,7 @@ function App(){
 
   return (
       <div>
-        <h2>Self Study</h2>
+        
         <AppRouter />
         <button onClick={notify}>Notify!</button>
         <ToastContainer />

@@ -1,6 +1,7 @@
 
 import './App.css';
 import { ToastContainer, toast } from 'react-toastify';
+import AppRouter from './router/AppRouter';
 
 
 function App(){
@@ -9,7 +10,7 @@ function App(){
   return (
       <div>
         <h2>Self Study</h2>
-        <br /><br />
+        <AppRouter />
         <button onClick={notify}>Notify!</button>
         <ToastContainer />
       </div>

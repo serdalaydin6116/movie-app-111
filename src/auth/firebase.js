@@ -26,75 +26,73 @@ import {
 //* https://console.firebase.google.com/ => project settings
 //! firebase console settings bölümünden firebaseconfig ayarlarını al
 
-// const firebaseConfig ={
-//   apiKey: "AIzaSyD-T7J7dXJWvfq5Jh4ORzAhKomssxwNkAs",
-//   authDomain: "movie-app-111.firebaseapp.com",
-//   projectId: "movie-app-111",
-//   storageBucket: "movie-app-111.appspot.com",
-//   messagingSenderId: "116075209064",
-//   appId: "1:116075209064:web:9f755b81830cf99c16b6dd"
-// };
-
-const firebaseConfig = {
-  apiKey: process.env.REACT_APP_apiKey,
-  authDomain: process.env.REACT_APP_authDomain,
-  projectId: process.env.REACT_APP_projectId,
-  storageBucket: process.env.REACT_APP_storageBucket,
-  messagingSenderId: process.env.REACT_APP_messagingSenderId,
-  appId: process.env.REACT_APP_appId,
+const firebaseConfig ={
+  apiKey: "AIzaSyD-T7J7dXJWvfq5Jh4ORzAhKomssxwNkAs",
+  authDomain: "movie-app-111.firebaseapp.com",
+  projectId: "movie-app-111",
+  storageBucket: "movie-app-111.appspot.com",
+  messagingSenderId: "116075209064",
+  appId: "1:116075209064:web:9f755b81830cf99c16b6dd"
 };
+
+// const firebaseConfig = {
+//   apiKey: process.env.REACT_APP_apiKey,
+//   authDomain: process.env.REACT_APP_authDomain,
+//   projectId: process.env.REACT_APP_projectId,
+//   storageBucket: process.env.REACT_APP_storageBucket,
+//   messagingSenderId: process.env.REACT_APP_messagingSenderId,
+//   appId: process.env.REACT_APP_appId,
+// };
 
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
 // Initialize Firebase Authentication and get a reference to the service
 const auth = getAuth(app);
 
 export const createUser = async (email, password, displayName, navigate) => {
-    try {
-      //? yeni bir kullanıcı oluşturmak için kullanılan firebase metodu
-      let userCredential = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      //? kullanıcı profilini güncellemek için kullanılan firebase metodu
-      await updateProfile(auth.currentUser, {
-        displayName: displayName,
-      });
-      navigate("/");
-    //   toastSuccessNotify("Registered successfully!");
-      console.log(userCredential);
+  try {
+    //? yeni bir kullanıcı oluşturmak için kullanılan firebase metodu
+    let userCredential = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    //? kullanıcı profilini güncellemek için kullanılan firebase metodu
+    await updateProfile(auth.currentUser, {
+      displayName: displayName,
+    });
+    navigate("/");
+    // toastSuccessNotify("Registered successfully!");
+    console.log(userCredential);
+  } catch (err) {
+    // toastErrorNotify(err.message);
+    alert(err.message);
+  }
+};
+
+//* https://console.firebase.google.com/
+//* => Authentication => sign-in-method => enable Email/password
+//! Email/password ile girişi enable yap
+export const signIn = async (email, password, navigate) => {
+  try {
+    //? mevcut kullanıcının giriş yapması için kullanılan firebase metodu
+    let userCredential = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    navigate("/");
+    // toastSuccessNotify("Logged in successfully!");
+    console.log(userCredential);
     } catch (err) {
-    //   toastErrorNotify(err.message);
-      alert(err.message);
+    // toastErrorNotify(err.message);
+    alert(err.message);
     }
   };
-  
-  //* https://console.firebase.google.com/
-  //* => Authentication => sign-in-method => enable Email/password
-  //! Email/password ile girişi enable yap
-  export const signIn = async (email, password, navigate) => {
-    try {
-      //? mevcut kullanıcının giriş yapması için kullanılan firebase metodu
-      let userCredential = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      navigate("/");
-    //   toastSuccessNotify("Logged in successfully!");
-      console.log(userCredential);
-    } catch (err) {
-    //   toastErrorNotify(err.message);
-      alert(err.message);
-    }
-  };
-  
+
   export const logOut = () => {
     signOut(auth);
-    alert("logged out successfully")
     // toastSuccessNotify("Logged out successfully!");
   };
   

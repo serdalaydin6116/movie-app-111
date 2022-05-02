@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router';
-import { signIn } from '../auth/firebase';
+import { forgotPassword, signIn, signUpProvider } from '../auth/firebase';
 
 const Login = () => {
   
@@ -14,6 +14,10 @@ const Login = () => {
     console.log(email, password);
 
   };
+  const handleProviderLogin = () => {
+    signUpProvider(navigate);
+  };
+
   return (
     <div className="d-flex justify-content-center">
       <div className="form-image">
@@ -36,20 +40,21 @@ const Login = () => {
              onChange={(e)=>setPassword(e.target.value)}
              required/>
           </div>
+
+          <div className="link" onClick={() => forgotPassword(email)}>
+            Forgot password?
+          </div>
+
           <input type="submit" className="btn btn-primary form-control" value="Login" 
           // onSubmit={handleSubmit}
           />
 
         </form>
-        <button className="btn btn-primary form-control">Continue with Google</button>
+        <button className="btn btn-primary form-control" onClick={handleProviderLogin}>Continue with Google
+        </button>
       </div>
-
-
-    </div>
-
-
-    
+    </div>    
   )
 }
 
-export default Login
+export default Login;

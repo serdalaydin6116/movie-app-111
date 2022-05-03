@@ -42,6 +42,7 @@ const AppRouter = () => {
             <Route path ="/register" element = {<Register />}/>
             <Route path ="/login" element = {<Login/>}/>
             <Route path ="*" element = {<NotFound />}/>
+            <Route path ="/details/:id" element = {<MovieDetail />}/>
 
         </Routes>
     </Router>

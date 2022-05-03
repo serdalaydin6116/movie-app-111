@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import MovieCard from "../components/MovieCard";
-import { AuthContext } from "../context/AuthContext";
-import { toastWarnNotify } from "../helpers/ToastNotify";
+// import { AuthContext } from "../context/AuthContext";
+// import { toastWarnNotify } from "../helpers/ToastNotify";
 
 
 
@@ -22,14 +22,21 @@ const Main = () => {
   const getMovies = (API) => {
     axios
       .get(API)
-      .then((res) => console.log(res.data.results))
+      .then((res) => setMovies(res.data.results))
       .catch((err) => console.log(err));
   };
 
 
 
-  return 
-    <div>Main</div>
+  return (
+    <>
+      <div className="d-flex justify-content-center flex-wrap">
+        {movies.map((movie) => (
+          <MovieCard key={movie.id} {...movie} />
+        ))}
+      </div>
+    </>
+  )
   
 };
 

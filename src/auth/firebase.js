@@ -93,6 +93,7 @@ export const signIn = async (email, password, navigate) => {
 
   export const logOut = () => {
     signOut(auth);
+    alert("Logged out successfully!")
     // toastSuccessNotify("Logged out successfully!");
   };
   

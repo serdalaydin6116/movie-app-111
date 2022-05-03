@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { toastWarnNotify } from "../helpers/ToastNotify";
 
 
 
@@ -20,8 +21,8 @@ const MovieCard = ({title, poster_path, overview, vote_average, id}) => {
       () =>
         currentUser
           ? navigate("details/" + id)
-          // : toastWarnNotify("Please log in to see details")
-      : alert("Please log in to see details")
+          : toastWarnNotify("Please log in to see details")
+      // : alert("Please log in to see details")
     }>
        <img src={poster_path ? IMG_API + poster_path : defaultImage} alt="" />
     

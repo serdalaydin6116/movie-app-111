@@ -8,7 +8,7 @@ const MovieDetail = () => {
   const [movieDetails, setMovieDetails] = useState();
   const [videoKey, setVideoKey] = useState();
 
-  // const API_KEY = process.env.REACT_APP_TMDB_KEY;
+  
   const API_KEY =  "44ca0b8068c6b9281d54cd70542fd5b6"
   const movieDetailBaseUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`;
   const videoUrl = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}`;
@@ -30,7 +30,7 @@ const MovieDetail = () => {
   return (
     <div className="container py-5">
       <h1 className="text-center">{movieDetails?.title}</h1>
-      {/* {videoKey && <VideoSection videoKey={videoKey} />} */}
+      {videoKey && <VideoSection videoKey={videoKey} />}
       <div className="card mb-3">
         <div className="row g-0">
           <div className="col-md-4">

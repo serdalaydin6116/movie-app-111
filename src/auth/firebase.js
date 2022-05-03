@@ -10,11 +10,11 @@ import {
     signOut,
     updateProfile,
   } from "firebase/auth";
-//   import {
-//     toastErrorNotify,
-//     toastSuccessNotify,
-//     toastWarnNotify,
-//   } from "../helpers/ToastNotify";
+  import {
+    toastErrorNotify,
+    toastSuccessNotify,
+    toastWarnNotify,
+  } from "../helpers/ToastNotify";
 
 
 
@@ -63,10 +63,10 @@ export const createUser = async (email, password, displayName, navigate) => {
       displayName: displayName,
     });
     navigate("/");
-    // toastSuccessNotify("Registered successfully!");
+    toastSuccessNotify("Registered successfully!");
     console.log(userCredential);
   } catch (err) {
-    // toastErrorNotify(err.message);
+    toastErrorNotify(err.message);
     alert(err.message);
   }
 };
@@ -83,10 +83,10 @@ export const signIn = async (email, password, navigate) => {
       password
     );
     navigate("/");
-    // toastSuccessNotify("Logged in successfully!");
+    toastSuccessNotify("Logged in successfully!");
     console.log(userCredential);
     } catch (err) {
-    // toastErrorNotify(err.message);
+    toastErrorNotify(err.message);
     alert(err.message);
     }
   };
@@ -94,7 +94,7 @@ export const signIn = async (email, password, navigate) => {
   export const logOut = () => {
     signOut(auth);
     alert("Logged out successfully!")
-    // toastSuccessNotify("Logged out successfully!");
+    toastSuccessNotify("Logged out successfully!");
   };
   
   export const userObserver = (setCurrentUser) => {
@@ -132,12 +132,12 @@ export const signIn = async (email, password, navigate) => {
     sendPasswordResetEmail(auth, email)
       .then(() => {
         // Password reset email sent!
-        // toastWarnNotify("Please check your mail box!");
-        alert("Please check your mail box!");
+        toastWarnNotify("Please check your mail box!");
+        // alert("Please check your mail box!");
       })
       .catch((err) => {
-        // toastErrorNotify(err.message);
-        alert(err.message);
-        // ..
+        toastErrorNotify(err.message);
+        // alert(err.message);
+        // // ..
       });
   };

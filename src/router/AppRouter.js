@@ -11,7 +11,7 @@ import Register from "../pages/Register";
 import Login from "../pages/Login";
 import MovieDetail from "../pages/MovieDetail";
 import React from 'react'
-import NotFound from "../pages/NotFound";
+
 import Navbar from "../components/Navbar";
 import { AuthContext } from "../context/AuthContext";
 import { useContext } from "react";
